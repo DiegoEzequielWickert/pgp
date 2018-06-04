@@ -25,6 +25,18 @@
 
             if(isset($_POST['email'])){
                 $email =   $_POST['email']; 
+                $sql = "select *s from cliente  where Email = '".$email."'";
+                $resultado = mysqli_query($mysqli, $sql); 
+                
+                //$cont = mysql_num_rows($resultado);
+                if(!$resultado){
+                    echo "E-mail já existe";
+                    $_SESSION['erro'] =  "Email já cadastrdo";
+                    exit();                   
+
+                }      
+            
+          
             }else $erro = 3;
                 $_SESSION['erro'] .= "Campo de  Email não preenchido" ;
             
